@@ -1,0 +1,27 @@
+<p>user-list works!</p>
+<div>
+    <table [ngClass]="tableStyle">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Username</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>IsReviewer</th>
+                <th>IsAdmin</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let u of Users">
+                <td>{{u.id}}</td>
+                <td>{{u.username}}</td>
+                <td>{{u.firstname}} {{u.lastname}}</td>
+                <td>{{u.phone}}</td>
+                <td>{{u.email}}</td>
+                <td>{{u.isReviewer ? "Yes" : "No"}}</td>
+                <td>{{u.isAdmin ? "Yes" : "No"}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
