@@ -18,5 +18,14 @@ export class UserService {
   list(): Observable<User[]> {
     return this.http.get(`${baseurl}`) as Observable<User[]>;
   }
+
+  get(id: number): Observable<User> {
+    return this.http.get(`${baseurl}/${id}`) as Observable<User>;
+  }
+
+  change(user: User): Observable<any> {
+    return this.http.put(`${baseurl}/${user.id}`, user) as Observable<any>;
+  }
+
   
 }

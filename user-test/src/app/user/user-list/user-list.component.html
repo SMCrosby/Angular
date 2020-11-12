@@ -1,5 +1,5 @@
-<p>user-list works!</p>
 <div>
+    <h3>User List</h3>
     <table [ngClass]="tableStyle">
         <thead>
             <tr>
@@ -10,10 +10,11 @@
                 <th>Email</th>
                 <th>IsReviewer</th>
                 <th>IsAdmin</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let u of Users">
+            <tr *ngFor="let u of users">
                 <td>{{u.id}}</td>
                 <td>{{u.username}}</td>
                 <td>{{u.firstname}} {{u.lastname}}</td>
@@ -21,6 +22,9 @@
                 <td>{{u.email}}</td>
                 <td>{{u.isReviewer ? "Yes" : "No"}}</td>
                 <td>{{u.isAdmin ? "Yes" : "No"}}</td>
+                <td>
+                    <a routerLink="/users/edit/{{u.id}}">Edit</a>
+                </td>
             </tr>
         </tbody>
     </table>
