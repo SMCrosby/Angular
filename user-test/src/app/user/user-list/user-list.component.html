@@ -1,27 +1,31 @@
 <div>
-    <h3>User List</h3>
+    <div class="h3">User List | 
+        <input [(ngModel)]="searchCriteria" class=searchbar type="text" placeholder="Search">
+    </div>
     <table [ngClass]="tableStyle">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Username</th>
-                <th>Name</th>
-                <th>Phone</th>
-                <th>Email</th>
+                <th><a (click)="sortBy('id')" class="btn btn-link">Id</a></th>
+                <th><a (click)="sortBy('username')" class="btn btn-link">Username</a></th>
+                <th>Password</th>
+                <th><a (click)="sortBy('lastname')" class="btn btn-link">Name</a></th>
+                <th><a (click)="sortBy('phone')" class="btn btn-link">Phone</a></th>
+                <th><a (click)="sortBy('email')" class="btn btn-link">Email</a></th>
                 <th>IsReviewer</th>
                 <th>IsAdmin</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let u of users">
+            <tr *ngFor="let u of users | userSearch:searchCriteria | sort:sortCriteria:ascSequence">
                 <td>{{u.id}}</td>
                 <td>{{u.username}}</td>
+                <td>{{u.password | masked}}</td>
                 <td>{{u.firstname}} {{u.lastname}}</td>
                 <td>{{u.phone}}</td>
                 <td>{{u.email}}</td>
-                <td>{{u.isReviewer ? "Yes" : "No"}}</td>
-                <td>{{u.isAdmin ? "Yes" : "No"}}</td>
+                <td>{{u.isReviewer | bool:"en"}}</td>
+                <td>{{u.isAdmin | bool:"en"}}</td>
                 <td>
                     <a routerLink="/users/edit/{{u.id}}">Edit</a>
                 </td>
